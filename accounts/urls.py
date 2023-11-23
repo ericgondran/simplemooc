@@ -10,4 +10,6 @@ urlpatterns = [
     path("Cadastre-se/", views.register, name='register'),
     path("Editar/", views.edit, name='edit'),
     path("Editar-senha/", views.edit_password, name='edit_password'),
+    path("Nova-senha/", views.password_reset, name='password_reset'),
+    path("Confirmar-nova-senha/<key>/", views.password_reset_confirm, name='password_reset_confirm'),
 ]
