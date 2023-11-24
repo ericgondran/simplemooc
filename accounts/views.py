@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib import messages
 
 from .forms import RegisterForm, EditAccountForm, PasswordResetForm
 from .models import PasswordReset
@@ -62,8 +63,10 @@ def edit(request):
         form = EditAccountForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            form = EditAccountForm(instance=request.user)
-            context['success'] = True
+            messages.success(
+                request, 'Os dados da sua conta foram alterados com sucesso'
+            )
+            return redirect('accounts:dashboard')
     else:
         form = EditAccountForm(instance=request.user)
     context['form'] = form
@@ -77,7 +80,10 @@ def edit_password(request):
         form = PasswordChangeForm(data=request.POST, user=request.user)
         if form.is_valid():
             form.save()
-            context['success'] = True
+            messages.success(
+                request, 'A sua senha foi alterada com sucesso'
+            )
+            return redirect('accounts:dashboard')
     else:
         form = PasswordChangeForm(user=request.user)
     context['form'] = form
