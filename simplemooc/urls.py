@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('core.urls', namespace='core')),
     path('cursos/', include('courses.urls', namespace='courses')),
     path('conta/', include('accounts.urls', namespace='accounts')),
+    path('forum/', include('forum.urls', namespace='forum')),
 ]
 
 if settings.DEBUG:
