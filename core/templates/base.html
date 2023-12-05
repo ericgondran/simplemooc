@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="header">
@@ -44,5 +45,6 @@
         Simple MOOC - Uma simples plataforma de ensino a distância
     </div>
 </div>
+{% block scripts %}{% endblock %}
 </body>
 </html>
